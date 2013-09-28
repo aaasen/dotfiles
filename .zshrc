@@ -24,15 +24,11 @@ fi
 
 export EDITOR=vim
 
+# setting prompt colors
 if [ -n "$SSH_CLIENT" ]; then
     PS1="%{$fg[green]%}%B%m%b {%{$reset_color%}%{$fg[white]%}%{$reset_color%}%~} "
-#    PS1=$'%{\e[1;32%}m%B%m%b %{\e[0m%}%{\e[1;30m%}{%\e[0m%}%~%{\e[1;30m%}}%{\e[0m%} '
 else
     PS1="%{$fg[black]%}%B%m%b {%{$reset_color%}%{$fg[white]%}%{$reset_color%}%~} "
-#    PS1=$'\e[1m%B%m%b \e[0m\e[1;30m{\e[0m%~\e[1;30m}\e[0m '
-#    PS1=$'\e[1m$%B%m%b \e[0m\e[1;30m${\e[0m%~\e[1;30m$}\e[0m '
-#    PS1=$'\e[0;31m$ \e[0m'
-#    PS1="%{$fg[red]%}%n%{$reset_color%}@%{$fg[blue]%}%m %{$fg[yellow]%}%~ %{$reset_color%}%% "
 fi
 
 #ls
@@ -41,21 +37,17 @@ alias la="ls -a" #all files
 alias ll="ls -l" #long listing format
 alias lx="ls -x" #grouped by file extension
 
-#cd
-alias ..="cd .."
+# vim style navigaton with cd
 alias j="cd .."
-alias ...="cd ../.."
 alias jj="cd ../.."
-
-#sudo
-alias s="sudo"
+alias jjj="cd ../../.."
+alias jjjj="cd ../../../.."
 
 # apt
 alias get="sudo apt-get install "
 alias sget="apt-cache search "
 
-
-#pacman
+# pacman
 #alias get="sudo pacman -S " #install package
 #alias sget="pacman -Ss " #search package database
 #alias uget="sudo pacman -Syu " #update system
@@ -63,12 +55,12 @@ alias sget="apt-cache search "
 #alias cget="pacman -Qdt | egrep -o '[a-z0-9-]+ '\ | sudo pacman -Rs || echo 'no unused orphan packages to remove'" #removes unused packages
 #alias iget="pacman -Qi " #information about package
 
-#yaourt
-alias yet="yaourt -S " #install package
-alias syet="yaourt -Ss " #search package database
-alias uyet="sudo yaourt -Syu " #update system
-alias ryet="sudo yaourt -Rs " #remove package
-alias iyet="yaourt -Qi " #information about package
+# yaourt
+#alias yet="yaourt -S " #install package
+#alias syet="yaourt -Ss " #search package database
+#alias uyet="sudo yaourt -Syu " #update system
+#alias ryet="sudo yaourt -Rs " #remove package
+#alias iyet="yaourt -Qi " #information about package
 
 #system
 alias sdown="sudo shutdown -h now"
