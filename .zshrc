@@ -32,5 +32,7 @@ else
 fi
 
 # load useful aliases which are stored in a different file
-# so that they can be used with bash and zsh 
-source ~/.aliases
+# so that they acn be used with bash and zsh 
+if [ -f ~/.aliases ]; then
+    . ~/.aliases
+fi
