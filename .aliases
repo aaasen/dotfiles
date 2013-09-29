@@ -1,0 +1,83 @@
+
+# useful aliases for the shell
+
+# ls
+alias ls="ls --color=auto --group-directories-first"
+alias la="ls -a" #all files
+alias ll="ls -l" #long listing format
+alias lx="ls -x" #grouped by file extension
+
+# vim style navigaton with cd
+alias j="cd .."
+alias jj="cd ../.."
+alias jjj="cd ../../.."
+alias jjjj="cd ../../../.."
+
+# apt
+alias get="sudo apt-get install "
+alias sget="apt-cache search "
+
+# pacman
+#alias get="sudo pacman -S " #install package
+#alias sget="pacman -Ss " #search package database
+#alias uget="sudo pacman -Syu " #update system
+#alias rget="sudo pacman -Rs " #remove package
+#alias cget="pacman -Qdt | egrep -o '[a-z0-9-]+ '\ | sudo pacman -Rs || echo 'no unused orphan packages to remove'" #removes unused packages
+#alias iget="pacman -Qi " #information about package
+
+# yaourt
+#alias yet="yaourt -S " #install package
+#alias syet="yaourt -Ss " #search package database
+#alias uyet="sudo yaourt -Syu " #update system
+#alias ryet="sudo yaourt -Rs " #remove package
+#alias iyet="yaourt -Qi " #information about package
+
+# ssh
+alias ssh="ssh -C " # compress all ssh traffic (faster)
+alias sshfs="sshfs -C "
+
+# screen
+alias sc="screen"
+alias sr="screen -r"
+
+# archiving
+alias utar="tar -xf" # untar
+alias atar="tar -cavf" # infer archive format from output file name
+alias gtar="tar -czvf" # gzip
+alias btar="tar -cjvf" # bz2
+alias xtar="tar -cJvf" # xz
+
+# log files
+alias xlog="cat /var/log/Xorg.0.log | egrep -n -T \"(\(EE\)|\(WW\))\" | less" # prints X logs
+
+# python
+alias venv="source venv/bin/activate"
+
+# go
+export GOPATH=/home/aasen/dev/go
+
+#mkdir and cd into it
+function md() {
+    mkdir -p "$1" && cd "$1"
+}
+
+# cd into dir and then ls
+function cd() {
+    builtin cd "${@:-$HOME}" && ls -cr --color=auto --group-directories-first
+}
+
+# pings google to see if the computer is connected to the internet
+function connected() { 
+    ping -c1 -w2 google.com | grep -c '1 received';
+}
+
+# initializes an ssh key so that it doesn't have to be unlocked for each use
+function sshinit() {
+    eval $(ssh-agent)
+    ssh-add ~/.ssh/id_rsa
+}
+
+# displays cpu frequency scaling data
+function cfsview() {
+    watch grep \"cpu MHz\" /proc/cpuinfo
+}
